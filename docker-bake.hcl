@@ -1,5 +1,15 @@
+target "docker-metadata-action" {}
 target "default" {
-    tags = [
-        "ghcr.io/socheatsok78-lab/docker-stack-config:main"
+    inherits = ["docker-metadata-action"]
+    context = "./"
+    dockerfile = "Dockerfile"
+    platforms = [
+        "linux/amd64",
+        "linux/arm64",
     ]
+}
+target "dev" {
+    inherits = ["docker-metadata-action"]
+    context = "./"
+    dockerfile = "Dockerfile"
 }
